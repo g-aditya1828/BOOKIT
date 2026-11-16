@@ -1,10 +1,16 @@
 package com.example.ticketbooking.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
+@Data
 @Entity
 @Table(name = "booking_seats")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookingSeat {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,18 +20,6 @@ public class BookingSeat {
     private Booking booking;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "seat_id", nullable = false)
-    private Seat seat;
-
-    @Column(nullable = false)
-    private Double price;
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public Booking getBooking() { return booking; }
-    public void setBooking(Booking booking) { this.booking = booking; }
-    public Seat getSeat() { return seat; }
-    public void setSeat(Seat seat) { this.seat = seat; }
-    public Double getPrice() { return price; }
-    public void setPrice(Double price) { this.price = price; }
+    @JoinColumn(name = "show_seat_id", nullable = false)
+    private ShowSeat showSeat;
 }

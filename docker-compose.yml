@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: bookit-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: bookit
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: bookit-backend
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/bookit
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgrespassword
+      JWT_SECRET: bookit-super-secret-key-must-be-at-least-32-chars-long!
+      RAZORPAY_KEY_ID: rzp_test_1DP5mmOlF5G5ag
+      RAZORPAY_KEY_SECRET: test_secret_for_bookit_dev
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:

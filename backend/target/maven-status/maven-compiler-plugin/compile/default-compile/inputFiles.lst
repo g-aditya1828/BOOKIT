@@ -1,5 +1,9 @@
 D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\config\BeanConfig.java
+D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\config\DataSeeder.java
 D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\config\SecurityConfig.java
+D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\controller\AuthController.java
+D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\controller\BookingController.java
+D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\controller\CatalogController.java
 D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\dto\AuthRequest.java
 D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\dto\AuthResponse.java
 D:\BOOKIT\backend\src\main\java\com\example\ticketbooking\dto\ContentDto.java
