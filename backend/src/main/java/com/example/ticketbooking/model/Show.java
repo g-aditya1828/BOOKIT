@@ -1,17 +1,10 @@
 package com.example.ticketbooking.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "shows")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Show {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,10 +27,17 @@ public class Show {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private ShowStatus status = ShowStatus.SCHEDULED;
-}
 
-enum ShowStatus {
-    SCHEDULED,
-    CANCELLED,
-    COMPLETED
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public ContentItem getContentItem() { return contentItem; }
+    public void setContentItem(ContentItem contentItem) { this.contentItem = contentItem; }
+    public Venue getVenue() { return venue; }
+    public void setVenue(Venue venue) { this.venue = venue; }
+    public ZonedDateTime getStartTime() { return startTime; }
+    public void setStartTime(ZonedDateTime startTime) { this.startTime = startTime; }
+    public ZonedDateTime getEndTime() { return endTime; }
+    public void setEndTime(ZonedDateTime endTime) { this.endTime = endTime; }
+    public ShowStatus getStatus() { return status; }
+    public void setStatus(ShowStatus status) { this.status = status; }
 }

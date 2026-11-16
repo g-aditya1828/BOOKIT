@@ -1,15 +1,10 @@
 package com.example.ticketbooking.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "content_items")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ContentItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +23,24 @@ public class ContentItem {
     private String genre;
     private Integer durationMinutes;
     private String posterUrl;
-    private java.time.LocalDate releaseDate;
-}
+    private LocalDate releaseDate;
 
-enum ContentType {
-    MOVIE,
-    LIVE_EVENT
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+    public ContentType getContentType() { return contentType; }
+    public void setContentType(ContentType contentType) { this.contentType = contentType; }
+    public String getLanguage() { return language; }
+    public void setLanguage(String language) { this.language = language; }
+    public String getGenre() { return genre; }
+    public void setGenre(String genre) { this.genre = genre; }
+    public Integer getDurationMinutes() { return durationMinutes; }
+    public void setDurationMinutes(Integer durationMinutes) { this.durationMinutes = durationMinutes; }
+    public String getPosterUrl() { return posterUrl; }
+    public void setPosterUrl(String posterUrl) { this.posterUrl = posterUrl; }
+    public LocalDate getReleaseDate() { return releaseDate; }
+    public void setReleaseDate(LocalDate releaseDate) { this.releaseDate = releaseDate; }
 }

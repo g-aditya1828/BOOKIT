@@ -29,9 +29,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = resolveToken(request);
         if (StringUtils.hasText(token) && tokenProvider.validateToken(token)) {
             String username = tokenProvider.getUsernameFromToken(token);
-            // In this simple example we embed role in the token as a claim named "role"
-            String role = Jwts.parserBuilder().setSigningKey(tokenProvider.getKey())
-                    .build().parseClaimsJws(token).getBody().get("role", String.class);
+            String role = tokenProvider.getRoleFromToken(token);
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
                     username, null, Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role)));
             auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

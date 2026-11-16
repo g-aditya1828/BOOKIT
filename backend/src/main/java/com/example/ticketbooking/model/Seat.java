@@ -1,16 +1,10 @@
 package com.example.ticketbooking.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "seats",
        uniqueConstraints = {@UniqueConstraint(columnNames = {"venue_id", "row_label", "seat_number"})})
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,10 +23,15 @@ public class Seat {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SeatCategory category;
-}
 
-enum SeatCategory {
-    SILVER,
-    GOLD,
-    PLATINUM
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public Venue getVenue() { return venue; }
+    public void setVenue(Venue venue) { this.venue = venue; }
+    public String getRowLabel() { return rowLabel; }
+    public void setRowLabel(String rowLabel) { this.rowLabel = rowLabel; }
+    public Integer getSeatNumber() { return seatNumber; }
+    public void setSeatNumber(Integer seatNumber) { this.seatNumber = seatNumber; }
+    public SeatCategory getCategory() { return category; }
+    public void setCategory(SeatCategory category) { this.category = category; }
 }
